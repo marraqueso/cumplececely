@@ -1,0 +1,27 @@
+/*Evitamos el Resaltado Azul de los Moviles*/
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;         /* Evita seleccionar texto al tocar */
+  -webkit-user-select: none; /* Para Safari/iOS */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE/Edge */
+}
+
+.mensaje {
+  font-size: 3rem;
+}
+p{
+    color: #999;
+}
+
+.contenedor {
+background-color: rgba(24, 24, 24, 0.983);
+}
+
+@media only screen and (max-width: 400px) {
+
+  .mensaje {
+    font-size: 3rem;
+  }
+}
