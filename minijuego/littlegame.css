@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    background: #ffe6f0;
+    font-family: sans-serif;
+}
+
+.cabezaglobo {
+    width: 100px;
+    height: 100px;
+    background: #ff69b4;
+    border-radius: 50%;
+    margin: auto;
+    transition: all 0.2s ease;
+}
+
+.nudoglobo {
+    width: 20px;
+    height: 30px;
+    background: #ff69b4;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.cintaglobo {
+    width: 3px;
+    height: 70px;
+    background: #8b0000;
+    margin: 0 auto;
+}
+
+
+#mensaje {
+    font-size: 1.5em;
+    color: #cc4d94;
+    display: none;
+}

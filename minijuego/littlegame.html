@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Game</title>
+    <link rel="stylesheet" href="littlegame.css">
 </head>
 <body>
-    <h1>Welcome to the Little Game!</h1>
-    <p>Click the button below to start playing.</p>
-    <button onclick="history.back()">Start Game</button>    
+    <div class="contenedor">
+        <div class="pantallaini">
+            <h1>🎈 Infla el globo 🎈</h1> 
+            <p>Presiona la barra espaciadora para inflar</p> 
+            <div id="mensaje">¡El globo explotó! 🎉</div>
+        </div>
+        
+        <div class="globo">
+            <div class="cabezaglobo" id="globo"></div>
+            <div class="nudoglobo"></div>
+            <div class="cintaglobo"></div>
+        </div>    
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
