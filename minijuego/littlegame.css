@@ -1,22 +1,22 @@
-body {
-    text-align: center;
-    background: #ffe6f0;
-    font-family: sans-serif;
-}
+@import url('../normalizacion.css');
+
+
 
 .cabezaglobo {
     width: 100px;
     height: 100px;
-    background: #ff69b4;
+    background: var(--primary);
+    border: 3px solid var(--primary-dark);
     border-radius: 50%;
-    margin: auto;
+    margin: 0 auto;
     transition: all 0.2s ease;
 }
 
 .nudoglobo {
     width: 20px;
     height: 30px;
-    background: #ff69b4;
+    background: var(--primary);
+    border: 3px solid var(--primary-dark);
     margin: 0 auto;
     border-radius: 10px 10px 0 0;
 }
@@ -31,6 +31,6 @@ body {
 
 #mensaje {
     font-size: 1.5em;
-    color: #cc4d94;
+    color: var(--primary-dark);
     display: none;
 }

@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+:root {
+    --primary: #ff69b4;
+    --primary-dark: #cc4d94;
+    --sombra-primary: #ffb6e0; /*#ffb6c1;*/
+    --background: rgba(24, 24, 24, 0.983);
+    --textcolor: #555;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.5;
+    color: var(--textcolor);
+    background-color: var(--background);
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+/* Elementos semánticos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Allura', cursive, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    user-select: none;
+}
