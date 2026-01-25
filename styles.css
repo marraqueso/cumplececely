@@ -64,8 +64,22 @@ p {
                brillo 1.5s infinite;
 }
 
+.mensaje h1 span#flor {
+    display: inline-block;
+    transform-origin: 48% 40%;
+    animation: girar 5s linear infinite;
+}
 
-/* Animación flotante */
+span#aparecer {
+    display: inline-block;
+    font-weight: bold;
+    color: var(--primary-dark);
+
+    animation: aparecerTexto 2s ease-in-out forwards;
+}
+
+
+/* Animación Texto */
 @keyframes flotar {
     from, to {
         transform: translate(0, 0);
@@ -82,4 +96,24 @@ p {
   50% {
     text-shadow: 0 0 6px var(--sombra-primary), 0 0 12px var(--primary-dark), 0 0 18px var(--sombra-primary);
   }
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes aparecerTexto {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
