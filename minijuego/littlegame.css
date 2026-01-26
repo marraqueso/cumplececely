@@ -1,6 +1,59 @@
 @import url('../normalizacion.css');
 
+.pantallaini {
+    position:absolute;
+    top:0;
+    background-color: rgba(10, 10, 10, 0.894);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    cursor: pointer;
+}
 
+.titulo {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-decoration: dotted underline;
+    animation: inflar 4s linear infinite;
+}
+
+.instrucciones {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: var(--textcolor);
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    margin-bottom: 40px;
+    width: 60%;
+}
+
+.instrucciones span {
+    color: var(--sombra-primary);
+    font-weight: bold;
+}
+
+.instrucciones strong {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.botoninicio {
+    position: relative;
+    top: 10%;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: var(--primary-dark);
+    animation: inflar 3s linear infinite,
+               cambiocolor 4s linear infinite;
+}
 
 .cabezaglobo {
     width: 100px;
@@ -33,4 +86,25 @@
     font-size: 1.5em;
     color: var(--primary-dark);
     display: none;
+}
+
+
+/* Animaciones*/
+
+/* Boton Inicio */
+@keyframes inflar {
+    from, to {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes cambiocolor {
+    0% { color: var(--primary-dark); }
+    50% { color: var(--sombra-primary); }
+    100% { color: var(--primary-dark); }
 }

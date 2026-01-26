@@ -9,9 +9,22 @@
 <body>
     <div class="contenedor">
         <div class="pantallaini">
-            <h1>🎈 Infla el globo 🎈</h1> 
-            <p>Presiona la barra espaciadora para inflar</p> 
-            <div id="mensaje">¡El globo explotó! 🎉</div>
+            <div class="titulo">
+                <h1>Infla el Globo</h1> 
+            </div>
+            <div class="instrucciones">
+                <code>
+                    Toca la pantalla varias veces para inflar tu globo
+                    <br />
+                    ¡Pero cuidado, puede <span>explotar</span>!”  
+                    <br />
+                    “Recuerda: el <strong>tiempo corre ⏳</strong>, <span>¡hazlo rápido!</span>”
+
+                </code>
+            </div>
+            <div class="botoninicio">
+                Toca la pantalla para iniciar
+            </div>
         </div>
         
         <div class="globo">
@@ -19,6 +32,7 @@
             <div class="nudoglobo"></div>
             <div class="cintaglobo"></div>
         </div>    
+        <div id="mensaje">¡El globo explotó! 🎉</div>
     </div>
     <script src="main.js"></script>
 </body>
