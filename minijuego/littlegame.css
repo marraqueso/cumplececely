@@ -55,6 +55,11 @@
                cambiocolor 4s linear infinite;
 }
 
+.ocultarinicio{
+    display: none;
+    pointer-events: none;
+}
+
 .cabezaglobo {
     width: 100px;
     height: 100px;

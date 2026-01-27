@@ -1,3 +1,5 @@
+let pantallainicial = document.querySelector(".pantallaini");
+
 let globo = document.getElementById("globo"); 
 let mensaje = document.getElementById("mensaje"); 
 let size = 100; 
@@ -8,6 +10,10 @@ let maxSize = 300;
 let tiempoLimite = 10000;
 // 10 segundos 
 let startTime = Date.now(); 
+
+pantallainicial.addEventListener("click", () => {
+    pantallainicial.classList.add("ocultarinicio");
+});
 
 document.body.onkeydown = function(e) { 
     if (e.code === "Space") {
