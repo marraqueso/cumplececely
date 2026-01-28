@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
 :root {
-    --primary: #ff69b4;
-    --primary-dark: #cc4d94;
-    --sombra-primary: #ffb6e0; /*#ffb6c1;*/
+    --primary: #ff69b4; /* rosa vibrante */
+    --primary-dark: #cc4d94;    /* rosa profundo */ 
+    --sombra-primary: #ffb6e0; /*#ffb6c1;*/ /* luz suave */
+    --highlight: #ffe6f7; /* brillo extra para reflejo */
+    --secondary: #d6003d; /* rojo intenso */
+    --secondary-dark: #8b0030; /* rojo vino para contraste */
     --background: rgba(24, 24, 24, 0.983);
     --textcolor: #999;
-
 }
 
 *{
