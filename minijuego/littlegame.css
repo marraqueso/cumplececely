@@ -88,10 +88,12 @@
 .cabezaglobo {
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle at 30% 30%, var(--primary), var(--secondary));
+    background: radial-gradient(circle at 30% 30%, var(--highlight), var(--secondary));
     border-radius: 50% 50% 45% 45%; /* forma ovalada */ 
     position: relative; 
-    box-shadow: inset -10px -20px 30px var(--sombra-primary), inset 5px 5px 15px var(--highlight), 0 10px 15px rgba(0,0,0,0.4);
+    box-shadow: inset -10px -20px 30px var(--sombra-primary), 
+        inset 5px 5px 15px var(--highlight), 
+        0 10px 15px rgba(0,0,0,0.4);
     margin: 0 auto;
     transition: all 0.2s ease;
 }

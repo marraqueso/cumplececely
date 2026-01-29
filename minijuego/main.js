@@ -16,17 +16,20 @@ pantallainicial.addEventListener("click", () => {
 });
 
 document.body.onkeydown = function(e) { 
+    console.log(startTime);
     if (e.code === "Space") {
         let tiempoTranscurrido = Date.now() - startTime;
+        console.log(tiempoTranscurrido);
         if (tiempoTranscurrido < tiempoLimite) { 
-            size += 20; globo.style.width = size + "px"; 
+            size += 20; 
+            globo.style.width = size + "px"; 
             globo.style.height = size + "px"; 
             if (size >= maxSize) { 
                 explotar(); 
             } 
         } 
         else { 
-            explotar(); 
+            console.log("Tiempo límite alcanzado"); 
         } 
     } 
 }; 
