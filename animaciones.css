@@ -59,11 +59,41 @@
         opacity: 1; 
     } 
     50% { 
-        transform: scale(1.5); /* se expande */ 
+        transform: scale(2); /* se expande */ 
         opacity: 0.7; 
     } 
     100% { 
         transform: scale(0); /* desaparece */ 
         opacity: 0; 
     } 
+}
+
+
+@keyframes caerNudo { 
+    0% { transform: translateY(0) rotate(0deg); 
+        opacity: 1; 
+    } 
+    50% { 
+        transform: translateY(50px) rotate(20deg); 
+        opacity: 0.8; 
+    } 
+    100% { 
+        transform: translateY(200px) rotate(45deg); 
+        opacity: 0; 
+    } 
+} 
+
+@keyframes caerCinta { 
+    0% { 
+        transform: translateY(0) rotate(0deg); 
+        opacity: 1; 
+    } 
+    50% { 
+        transform: translateY(80px) rotate(-10deg); 
+        opacity: 0.7; 
+    } 
+    100% { 
+        transform: translateY(250px) rotate(-30deg); 
+        opacity: 0; 
+    }
 }

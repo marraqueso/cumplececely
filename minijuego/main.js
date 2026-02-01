@@ -35,6 +35,9 @@ function explotar() {
     globo.removeEventListener("click", inflarGlobo);
     globo.classList.add("explosion");
 
+    document.querySelector(".nudoglobo").classList.add("caida"); 
+    document.querySelector(".cintaglobo").classList.add("caida");
+
     // confeti opcional
     // confetti({
     //     particleCount: 100,

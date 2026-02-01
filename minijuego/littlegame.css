@@ -130,10 +130,18 @@
     margin: 0 auto;
 }
 
-.explocion {
+#globo.explocion {
     pointer-events: none;
     animation: explotar 0.5s ease-in-out forwards;
     z-index: 50;
+}
+
+.nudoglobo.caida { 
+    animation: caerNudo 1s ease-out forwards; 
+} 
+
+.cintaglobo.caida { 
+    animation: caerCinta 1.2s ease-out forwards; 
 }
 
 #mensaje {
