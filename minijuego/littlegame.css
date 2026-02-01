@@ -1,4 +1,5 @@
 @import url('../normalizacion.css');
+@import url('../animaciones.css');
 
 .pantallaini, .pantallajuego {
     position:absolute;
@@ -96,7 +97,8 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    cursor: pointer;;
+    cursor: pointer;
+    animation: flotar 3s ease-in-out infinite;
 }
 
 .cabezaglobo {
@@ -121,18 +123,6 @@
     border-radius: 10px 10px 0 0;
 }
 
-/* cuerda */ 
-/* .globo::after { 
-    content: ""; 
-    position: absolute; 
-    bottom: -40px; 
-    left: 50%; 
-    width: 2px; 
-    height: 40px; 
-    background: var(--textcolor);
-    transform: translateX(50%); 
-} */
-
 .cintaglobo {
     width: 2px;
     height: 40px;
@@ -140,31 +130,15 @@
     margin: 0 auto;
 }
 
+.explocion {
+    pointer-events: none;
+    animation: explotar 0.5s ease-in-out forwards;
+    z-index: 50;
+}
 
 #mensaje {
     font-size: 1.5em;
     color: var(--primary-dark);
     display: none;
     z-index: 100;
-}
-
-
-/* Animaciones*/
-
-/* Boton Inicio */
-@keyframes inflar {
-    from, to {
-        transform: scale(1);
-        opacity: 0.6;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-}
-
-@keyframes cambiocolor {
-    0% { color: var(--primary-dark); }
-    50% { color: var(--sombra-primary); }
-    100% { color: var(--primary-dark); }
 }

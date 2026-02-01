@@ -1,0 +1,69 @@
+@keyframes flotar {
+    from, to {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -10px);
+    }
+}
+
+@keyframes brillo {
+  from, to {
+    text-shadow: 0 0 3px var(--sombra-primary), 0 0 6px var(--primary-dark), 0 0 9px var(--primary-dark);
+  }
+  50% {
+    text-shadow: 0 0 6px var(--sombra-primary), 0 0 12px var(--primary-dark), 0 0 18px var(--sombra-primary);
+  }
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes aparecerTexto {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes inflar {
+    from, to {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes cambiocolor {
+    0% { color: var(--primary-dark); }
+    50% { color: var(--sombra-primary); }
+    100% { color: var(--primary-dark); }
+}
+
+@keyframes explotar {
+    0% { 
+        transform: scale(1); 
+        opacity: 1; 
+    } 
+    50% { 
+        transform: scale(1.5); /* se expande */ 
+        opacity: 0.7; 
+    } 
+    100% { 
+        transform: scale(0); /* desaparece */ 
+        opacity: 0; 
+    } 
+}

@@ -29,17 +29,22 @@ function inflarGlobo() {
 }
 
 // Función para explotar el globo 
-function explotar() { 
-    clearInterval(intervaloTiempo); 
-    mensaje.textContent = "¡El globo explotó!"; 
+function explotar() {
+    clearInterval(intervaloTiempo);
+    mensaje.textContent = "💥 ¡El globo explotó!";
     globo.removeEventListener("click", inflarGlobo);
-    mensaje.style.display = "block";
-} 
+    globo.classList.add("explosion");
 
-// Función para terminar el juego por tiempo 
-function terminarJuego() { 
-    mensaje.textContent = "⏰ Se acabó el tiempo"; 
-    globo.removeEventListener("click", inflarGlobo);
+    // confeti opcional
+    // confetti({
+    //     particleCount: 100,
+    //     spread: 70,
+    //     origin: { y: 0.6 }
+    // });
+
+    setTimeout(() => {
+        globo.style.display = "none";
+    }, 600);
     mensaje.style.display = "block";
 }
 
