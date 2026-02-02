@@ -133,7 +133,7 @@
 #globo.explocion {
     pointer-events: none;
     animation: explotar 0.5s ease-in-out forwards;
-    z-index: 50;
+    z-index: 49;
 }
 
 .nudoglobo.caida { 
@@ -142,6 +142,10 @@
 
 .cintaglobo.caida { 
     animation: caerCinta 1.2s ease-out forwards; 
+}
+
+canvas{
+    z-index: 50;
 }
 
 #mensaje {
