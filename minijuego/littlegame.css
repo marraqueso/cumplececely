@@ -137,11 +137,11 @@
 }
 
 .nudoglobo.caida { 
-    animation: caerNudo 1s ease-out forwards; 
+    animation: caerNudo 0.6s ease-out forwards; 
 } 
 
 .cintaglobo.caida { 
-    animation: caerCinta 1.2s ease-out forwards; 
+    animation: caerCinta 0.7s ease-out forwards; 
 }
 
 canvas{

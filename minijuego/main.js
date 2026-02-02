@@ -1,5 +1,5 @@
 //importar confeti si es necesario
-import {crearConfeti, animarConfeti} from './Confeti.js';
+import {crearConfeti, animarConfeti, crearExplosionConfeti, animarExplosionConfeti} from './Confeti.js';
 
 // Variables de elementos HTML
 let pantallainicial = document.querySelector(".pantallaini");
@@ -27,7 +27,6 @@ function inflarGlobo() {
     globo.style.height = size + "px";
     console.log("Globo inflado a tamaño: " + size);
     if (size >= maxSize) { 
-        crearConfeti(50); // crear confeti
         explotar();
     }  
 }
@@ -39,15 +38,16 @@ function explotar() {
     globo.removeEventListener("click", inflarGlobo);
     globo.classList.add("explosion");
 
-    document.querySelector(".nudoglobo").classList.add("caida"); 
-    document.querySelector(".cintaglobo").classList.add("caida");
     document.querySelector(".tiempo").style.display = "none";
-
+    
     // confeti opcional
+    crearExplosionConfeti(globo, 100); // crear confeti
     
     setTimeout(() => {
-        animarConfeti(30);
+        document.querySelector(".nudoglobo").classList.add("caida"); 
+        document.querySelector(".cintaglobo").classList.add("caida");
         globo.style.display = "none";
+        animarExplosionConfeti();
     }, 600);
     mensaje.style.display = "block";
 }
