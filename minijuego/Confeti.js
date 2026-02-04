@@ -57,7 +57,7 @@ export function crearExplosionConfeti(globoElement, cantidad = 80) {
       color: coloresConfeti[Math.floor(Math.random() * coloresConfeti.length)],
       velocidadX: Math.cos(angulo) * velocidad,
       velocidadY: Math.sin(angulo) * velocidad,
-      vida: 100 // frames antes de desaparecer
+      vida: 200 // frames antes de desaparecer
     });
   }
 }

@@ -28,7 +28,12 @@ function inflarGlobo() {
     console.log("Globo inflado a tamaño: " + size);
     if (size >= maxSize) { 
         explotar();
-    }  
+    } 
+    setTimeout(() => {
+        
+        window.location.href = "../index.html";
+        
+    }, 3500);
 }
 
 // Función para explotar el globo 
@@ -37,7 +42,7 @@ function explotar() {
     mensaje.textContent = "💥 ¡El globo explotó!";
     globo.removeEventListener("click", inflarGlobo);
     globo.classList.add("explosion");
-
+    
     document.querySelector(".tiempo").style.display = "none";
     
     // confeti opcional
@@ -48,8 +53,10 @@ function explotar() {
         document.querySelector(".cintaglobo").classList.add("caida");
         globo.style.display = "none";
         animarExplosionConfeti();
-    }, 600);
-    mensaje.style.display = "block";
+        mensaje.style.display = "block";
+        mensaje.style.animation = "aparecerTexto 1s forwards";
+    }, 200);
+    
 }
 
 // Lógica del juego

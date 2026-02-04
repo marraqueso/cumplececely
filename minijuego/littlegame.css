@@ -147,6 +147,10 @@
 canvas{
     pointer-events: none;
     z-index: 50;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    display: block;
 }
 
 #mensaje {
