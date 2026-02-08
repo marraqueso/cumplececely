@@ -39,7 +39,7 @@ function inflarGlobo() {
 // Función para explotar el globo 
 function explotar() {
     clearInterval(intervaloTiempo);
-    mensaje.textContent = "💥 ¡El globo explotó!";
+    mensaje.textContent = "¡El globo explotó!";
     globo.removeEventListener("click", inflarGlobo);
     globo.classList.add("explosion");
     
