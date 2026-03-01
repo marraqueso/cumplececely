@@ -13,7 +13,6 @@
 }
 
 .carta {
-  
 width: min(880px, 92vw);
   background:
     /* brillo sutil superior sin usar color absoluto: tomamos highlight con transparencia */
@@ -24,7 +23,6 @@ width: min(880px, 92vw);
   padding: clamp(24px, 5vw, 48px);
   box-shadow: var(--shadow); /* viene de normalizacion.css */
   overflow: visible; /* evita cortes del contenido */
-
 }
 
 .mensaje {
@@ -32,7 +30,6 @@ width: min(880px, 92vw);
   margin: 0 auto;
   text-align: center;
 }
-
 
 /* ===== Título y acentos ===== */
 .titulo {
@@ -93,11 +90,52 @@ width: min(880px, 92vw);
     font-family: 'Allura', cursive;
     font-size: clamp(1.2rem, 2.6vw, 2rem);
     color: var(--text);
-    text-shadow: 0 2px 12px color-mix(in oklab, var(--primary) 25%, transparent);
+    text-shadow: 0 2px 12px color-mix(in oklab, var(--primary) 25%, transparent); 
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .65s ease, transform .65s ease;
+    transition-delay: .5s; /* entra un pelín después del último párrafo */
 }
+
+.firma.show {
+  opacity: 1;
+  transform: translateY(0);
+  text-shadow: 0 2px 12px color-mix(in oklab, var(--primary) 24%, transparent);
+}
+
 
 /* ===== Accesibilidad (foco) ===== */
 :focus-visible {
   outline: 3px solid var(--primary);
   outline-offset: 3px;
+}
+
+
+
+/* Cursor por párrafo: sólo aparece mientras esa línea se escribe */
+.tw-line {
+  position: relative;
+  display: block;
+  min-height: 1.6em;       /* evita saltos mientras escribe */
+  letter-spacing: 0.1px;
+}
+.tw-line::after {
+  content: '';
+  margin-left: 6px;
+  opacity: 0;              /* oculto por defecto */
+}
+.tw-line.is-typing::after {
+  content: '▌';
+  color: var(--primary);
+  opacity: .9;
+  animation: tw-blink 0.9s steps(1, end) infinite;
+}
+.tw-line.tw-done::after {
+  content: '';
+  opacity: 0;
+  animation: none;
+}
+
+.tw-line.accent {
+    color: var(--primary-dark); 
 }

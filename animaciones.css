@@ -103,3 +103,14 @@
   60%  { transform: scale(1.08) rotate(2deg);  opacity: .96; }
   100% { transform: scale(1) rotate(0deg);     opacity: .9; }
 }
+
+
+@keyframes tw-blink {
+  50% { opacity: 0; }
+}
+
+/* Accesibilidad: sin animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .tw-line::after { display: none; }
+  .firma { transition: none; opacity: 1; transform: none; }
+}
