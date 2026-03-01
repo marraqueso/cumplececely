@@ -109,8 +109,8 @@
   50% { opacity: 0; }
 }
 
-/* Accesibilidad: sin animaciones si el usuario lo prefiere */
+/* Prefiere menos movimiento */
 @media (prefers-reduced-motion: reduce) {
-  .tw-line::after { display: none; }
-  .firma { transition: none; opacity: 1; transform: none; }
+  .carta.papel .tw-line.is-typing::after { animation: none; }
+  .carta.papel .firma { transition: none; opacity: 1; transform: none; }
 }

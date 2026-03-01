@@ -9,7 +9,6 @@
   place-items: center;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 .carta {
@@ -139,3 +138,159 @@ width: min(880px, 92vw);
 .tw-line.accent {
     color: var(--primary-dark); 
 }
+
+/* ===== MODO PAPEL (estilo carta manuscrita) ===== */
+
+/* Activado con .carta.papel */
+.carta.papel {
+  /* Base “papel marfil” usando tu highlight y blanco — sin hex sueltos */
+  background:
+    /* textura de fibras suaves (radiales sutiles) */
+    radial-gradient(1800px 800px at 10% 8%, color-mix(in oklab, var(--highlight) 55%, white) 0%, transparent 60%),
+    radial-gradient(1600px 700px at 90% 92%, color-mix(in oklab, var(--highlight) 35%, white) 0%, transparent 58%),
+    /* renglones (puedes comentar esta línea si no quieres líneas) */
+    repeating-linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--text) 10%, transparent) 0px,
+      color-mix(in oklab, var(--text) 10%, transparent) 1px,
+      transparent 1px,
+      transparent 28px
+    ),
+    /* base papel */
+    color-mix(in oklab, white 92%, var(--highlight) 8%);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, white);
+  box-shadow:
+    0 24px 60px color-mix(in oklab, black 25%, transparent),
+    0 2px 0 color-mix(in oklab, var(--text) 6%, white);
+  border-radius: 14px;
+  padding: clamp(30px, 6vw, 54px);
+  transform: rotate(-0.35deg); /* leve inclinación “natural” */
+}
+
+/* Simula una ligera sombra interior como papel grueso */
+.carta.papel::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 color-mix(in oklab, var(--text) 9%, white);
+}
+
+/* Pega cinta (washi) opcional — descomenta si quieres el detalle*/
+.carta.papel::after {
+  content: "";
+  position: absolute;
+  top: -8px; left: 50%;
+  width: 120px; height: 22px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: color-mix(in oklab, var(--sombra-primary) 70%, white);
+  opacity: .65;
+  border-radius: 2px;
+}
+
+
+/* Maquetación de carta: texto a la izquierda con margen */
+.carta.papel .mensaje {
+  text-align: left;
+  max-width: 720px;
+}
+
+/* Título caligráfico grande (Allura) */
+.carta.papel .titulo {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-family: 'Allura', cursive; /* coherente con tu normalización */
+    font-size: clamp(40px, 7.2vw, 74px);
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+    color: color-mix(in oklab, black 85%, var(--secondary-dark) 15%); /* “tinta” */
+    text-shadow: 0 .3px 0 color-mix(in oklab, var(--secondary-dark) 8%, transparent);
+    transform: rotate(0.25deg); /* leve mano */
+}
+
+/* Línea vertical de margen tipo “legal pad” (opcional) */
+.carta.papel .contenido {
+  position: relative;
+  padding-left: 28px; /* margen para la línea vertical */
+  margin-top: 12px;
+}
+.carta.papel .contenido::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 10px;
+  width: 2px;
+  background: color-mix(in oklab, var(--secondary) 28%, transparent);
+  opacity: .35;
+  border-radius: 2px;
+}
+
+/* Cuerpo manuscrito (usa Caveat si lo cargaste, sino Montserrat) */
+.carta.papel .contenido .tw-line {
+  font-family: 'Caveat', 'Allura', cursive, 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.12rem, 2.6vw, 1.45rem);
+  line-height: 2.05; /* coincide con los renglones */
+  color: color-mix(in oklab, black 86%, var(--secondary-dark) 14%);
+  text-shadow:
+    0 .25px 0 color-mix(in oklab, var(--secondary-dark) 8%, transparent),
+    0 0 0 transparent;
+  transform: rotate(0.1deg);
+  /* pequeña variación por línea para “mano humana” */
+}
+.carta.papel .contenido .tw-line:nth-child(odd) { transform: rotate(0.2deg); }
+.carta.papel .contenido .tw-line:nth-child(3n)   { transform: rotate(-0.15deg); }
+
+/* Acento en la última línea (si quieres menos contraste, usa var(--text-strong)) */
+.carta.papel .contenido .tw-line.accent {
+  color: color-mix(in oklab, black 80%, var(--primary-dark) 20%);
+}
+
+/* Cursor mientras escribe: una barrita fina como lápiz/pluma */
+.carta.papel .tw-line::after { content: ''; } /* default oculto (lo controla .is-typing) */
+.carta.papel .tw-line.is-typing::after {
+  content: '|';
+  position: relative;
+  left: 4px;
+  font-weight: 400;
+  color: color-mix(in oklab, black 70%, var(--secondary-dark) 30%);
+  animation: tw-blink 0.9s steps(1, end) infinite;
+}
+
+/* Firma: igual “tinta” + fade-in (clase .show la pone el JS al final) */
+.carta.papel .firma {
+    font-family: 'Allura', cursive;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: color-mix(in oklab, black 85%, var(--secondary-dark) 15%);
+    text-shadow: 0 .35px 0 color-mix(in oklab, var(--secondary-dark) 10%, transparent);
+    margin-top: 18px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .6s ease, transform .6s ease;
+
+    text-align: right;
+    width: 100%;
+    margin-top: 24px;
+    padding-right: 25px;
+}
+.carta.papel .firma.show { opacity: 1; transform: translateY(0); }
+
+/* Separador de firma, más sutil “tinta” */
+.carta.papel .firma::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: 18px 0 12px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, black 65%, var(--primary) 35%) 50%,
+    transparent 100%
+  );
+}
+
+.carta.papel .tw-line::after { content: ''; opacity: 0; }
+.carta.papel .tw-line.is-typing::after { content: '|'; opacity: .9; }
+.carta.papel .tw-line.tw-done::after { content: ''; opacity: 0; }
+

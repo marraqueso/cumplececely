@@ -29,3 +29,11 @@ background-color: rgba(24, 24, 24, 0.983);
 
 .carta { border-radius: 16px; }
 .titulo .name strong { text-shadow: none; }
+
+/* Responsive fino */
+@media (max-width: 480px) {
+  .carta.papel { border-radius: 12px; padding: 22px; transform: rotate(0deg); }
+  .carta.papel .titulo { font-size: clamp(36px, 9vw, 56px); }
+  .carta.papel .contenido { padding-left: 22px; }
+  .carta.papel .contenido::before { left: 8px; }
+}
