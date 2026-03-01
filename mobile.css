@@ -25,3 +25,7 @@ background-color: rgba(24, 24, 24, 0.983);
     font-size: 3rem;
   }
 }
+
+
+.carta { border-radius: 16px; }
+.titulo .name strong { text-shadow: none; }

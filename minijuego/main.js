@@ -31,7 +31,7 @@ function inflarGlobo() {
     } 
     setTimeout(() => {
         
-        window.location.href = "../index.html";
+        window.location.href = "../carta/carta.html";
         
     }, 3500);
 }

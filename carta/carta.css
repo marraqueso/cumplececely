@@ -2,3 +2,102 @@
 @import url(../mobile.css);
 @import url(../animaciones.css);
 
+
+/* ===== Layout ===== */
+.contenedor {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.carta {
+  
+width: min(880px, 92vw);
+  background:
+    /* brillo sutil superior sin usar color absoluto: tomamos highlight con transparencia */
+    linear-gradient(180deg, color-mix(in oklab, var(--highlight) 10%, transparent), transparent),
+    var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: clamp(24px, 5vw, 48px);
+  box-shadow: var(--shadow); /* viene de normalizacion.css */
+  overflow: visible; /* evita cortes del contenido */
+
+}
+
+.mensaje {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* ===== Título y acentos ===== */
+.titulo {
+  font-family: 'Allura', cursive; /* consistente con normalizacion.css */
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: 0.2px;
+  margin-bottom: 0.6rem;
+  color: var(--text-strong); /* reforzamos contraste desde variable */
+}
+
+.titulo .name strong {
+  color: var(--primary);
+  /* Resplandor basado en el primario, sin RGBA directos */
+  text-shadow:
+    0 0 0 transparent,
+    0 6px 20px color-mix(in oklab, var(--primary-dark) 35%, transparent);
+}
+
+.flower {
+  margin-left: 8px;
+  display: inline-block;
+  transform-origin: 70% 70%;
+  opacity: .9;
+  /* Sombra de la flor usando primario */
+  filter: drop-shadow(0 4px 12px color-mix(in oklab, var(--primary-dark) 25%, transparent));
+  animation: flower-pop .9s ease-out both;
+}
+
+/* ===== Texto ===== */
+.contenido p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+}
+
+/* Acento en el último párrafo: usa el rosa profundo de variables */
+.contenido p:last-child {
+  color: var(--primary-dark);
+}
+
+/* ===== Firma ===== */
+
+.firma::before {
+    content: "";
+    display: block;
+    height: 1.5px;
+    margin: 18px auto 12px;
+    /* Degradado usando el primario, sin valores fijos */
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in oklab, var(--primary) 35%, transparent) 50%,
+        transparent 100%
+    );
+}
+    
+.firma {
+    font-family: 'Allura', cursive;
+    font-size: clamp(1.2rem, 2.6vw, 2rem);
+    color: var(--text);
+    text-shadow: 0 2px 12px color-mix(in oklab, var(--primary) 25%, transparent);
+}
+
+/* ===== Accesibilidad (foco) ===== */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
