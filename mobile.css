@@ -31,9 +31,23 @@ background-color: rgba(24, 24, 24, 0.983);
 .titulo .name strong { text-shadow: none; }
 
 /* Responsive fino */
-@media (max-width: 480px) {
-  .carta.papel { border-radius: 12px; padding: 22px; transform: rotate(0deg); }
-  .carta.papel .titulo { font-size: clamp(36px, 9vw, 56px); }
-  .carta.papel .contenido { padding-left: 22px; }
-  .carta.papel .contenido::before { left: 8px; }
+/* Alturas medianas */
+@media (max-height: 720px) {
+  .carta.papel { padding: clamp(22px, 5vw, 32px); }
+  .carta.papel .titulo { font-size: clamp(32px, 7vw, 60px); }
+  .carta.papel .contenido .tw-line { font-size: clamp(1rem, 2.3vw, 1.25rem); line-height: 1.85; }
+}
+
+/* Alturas bajas (teléfonos mini) */
+@media (max-height: 620px) {
+  .carta.papel { padding: 18px; }
+  .carta.papel .titulo { font-size: clamp(28px, 6.6vw, 52px); }
+  .carta.papel .contenido .tw-line { font-size: 0.95rem; line-height: 1.75; }
+  .carta.papel .firma { font-size: clamp(1.1rem, 2.7vw, 1.4rem); }
+}
+
+/* Alturas muy bajas o teclado abierto */
+@media (max-height: 560px) {
+  .carta.papel .titulo { margin-bottom: 6px; }
+  .carta.papel .contenido { margin-top: 6px; }
 }
