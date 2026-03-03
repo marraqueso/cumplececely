@@ -19,22 +19,25 @@ body {
 }
 
 .carta {
-  height: 95dvh; /* para evitar overflow en móviles */
-  overflow: visible;
+  /* height: 95dvh; para evitar overflow en móviles */
+  /* overflow: visible; */
   /* overscroll-behavior: contain; */
+  /* padding-top: 15px; */
 }
 
 .tw-line {
   display: block;
   min-height: 1.6em; /* ya lo tenías; mantiene el renglón “fijo” */
-  margin: 0;         /* sin espacio entre párrafos */
+  margin: 0; /* sin espacio entre párrafos */
 }
-
 
 /* ===== MODO PAPEL (estilo carta manuscrita) ===== */
 
 /* Activado con .carta.papel */
 .carta.papel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 95dvh; /* para evitar overflow en móviles */
   position: relative;
   width: clamp(320px, 80vw, 640px);
   /* Base “papel marfil” usando tu highlight y blanco — sin hex sueltos */
@@ -65,6 +68,7 @@ body {
     0 2px 0 color-mix(in oklab, var(--text) 6%, white);
   border-radius: 3px;
   padding: clamp(30px, 6vw, 54px);
+  overflow: hidden; /* para que las manchas y detalles no se salgan del papel */
 }
 
 /* Simula una ligera sombra interior como papel grueso */
@@ -118,7 +122,6 @@ body {
       color-mix(in oklab, var(--secondary-dark) 30%, black) 0%,
       transparent 65%
     );
-
   opacity: 0.15; /* intensidad global de las manchas */
   mix-blend-mode: multiply; /* se integran con el papel */
   filter: blur(0.3px) contrast(1.02); /* micro-difusión */
@@ -148,7 +151,7 @@ body {
 
 /* Título caligráfico grande (Allura) */
 .carta.papel .titulo {
-  margin-bottom: 0px; /* antes: 10px */
+  margin-bottom: 0; /* antes: 10px */
   transform: rotate(0.2deg) translateY(-30px); /* lo sube 2px y mantiene la gracia manuscrita */
   text-align: center;
   width: 100%;
@@ -171,8 +174,42 @@ body {
 /* Línea vertical de margen tipo “legal pad” (opcional) */
 .carta.papel .contenido {
   position: relative;
-  padding-left: 28px; /* margen para la línea vertical */
-  margin-top: 12px;
+  padding-left: 25px; /* margen para la línea vertical */
+  margin-top: 4px;
+  overflow-y: scroll;
+  padding-top: 2px; /* para que el scroll no tape el primer renglón */
+  min-height: 0; /* para que el scroll funcione dentro del contenido */
+  max-height: 41vh; /* para evitar overflow en móviles */
+
+  scrollbar-gutter: stable; /* sin saltos al aparecer el scroll */
+
+  /* Firefox */
+  scrollbar-width: thin; /* fino */
+  scrollbar-color: color-mix(
+      in oklab,
+      var(--primary) 55%,
+      var(--secondary-dark) 15%
+    )
+    /* thumb */ color-mix(in oklab, var(--highlight) 75%, white 25%); /* track */
+
+  /* Suavidad (accesibilidad más abajo) */
+  scroll-behavior: smooth;
+
+  /* Fades superior/inferior para un corte elegante */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) 10px,
+    rgba(0, 0, 0, 1) calc(100% - 10px),
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 1) 10px,
+    rgba(0, 0, 0, 1) calc(100% - 10px),
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 .carta.papel .contenido::before {
   content: "";
@@ -181,7 +218,15 @@ body {
   bottom: 0;
   left: 10px;
   width: 2px;
-  background: color-mix(in oklab, var(--secondary) 28%, transparent);
+
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--secondary) 0%, transparent) 0%,
+    color-mix(in oklab, var(--secondary) 28%, transparent) 10px,
+    color-mix(in oklab, var(--secondary) 28%, transparent) calc(100% - 10px),
+    color-mix(in oklab, var(--secondary) 0%, transparent) 100%
+  );
+
   opacity: 0.5;
   border-radius: 2px;
 }
@@ -242,6 +287,7 @@ body {
   width: 100%;
   margin-top: 24px;
   padding-right: 25px;
+  grid-row: 3; /* se posiciona al final de la carta */
 }
 .carta.papel .firma.show {
   opacity: 1;
@@ -292,33 +338,41 @@ body {
 }
 
 
-/* Una mancha genérica (se posicionará vía JS) */
-.ink-drop {
-  position: absolute;
-  width: 22px; height: 14px; /* tamaño base, lo variamos en JS */
-  border-radius: 50%;
-  background: color-mix(in oklab, var(--secondary-dark) 30%, black);
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9) rotate(-6deg);
-  filter: blur(0.2px);
-  mix-blend-mode: multiply;
-  transition: opacity .45s ease, transform .45s cubic-bezier(.2,.7,.2,1);
-  z-index: 100; /* por encima del texto */
+/* WebKit / Chromium */
+.carta.papel .contenido::-webkit-scrollbar {
+  width: 4px;                      /* fino y elegante */
 }
 
-.ink-drop.show {
-  opacity: 0.22;                    /* intensidad global */
-  transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  z-index: 100; /* por encima del texto */
+.carta.papel .contenido::-webkit-scrollbar-track {
+  /* Rosa muy claro translúcido sobre la base del papel */
+  background: color-mix(in oklab, var(--highlight) 85%, white 15%);
+  border-left: 1px solid color-mix(in oklab, var(--sombra-primary) 35%, transparent);
+  border-radius: 999px;
 }
 
-/* Variantes de salpicado */
-.ink-drop::before, .ink-drop::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: inherit;
-  opacity: .55;
+.carta.papel .contenido::-webkit-scrollbar-thumb {
+  /* “tinta rosa” translúcida */
+  background: color-mix(in oklab, var(--primary) 55%, var(--secondary-dark) 10%);
+  border-radius: 999px;
+
+  /* crea efecto de canal y translucidez */
+  border: 2px solid color-mix(in oklab, var(--highlight) 85%, white 15%);
+  box-shadow:
+    inset 0 0 0.75px color-mix(in oklab, white 45%, transparent),
+    0 0 0 transparent;
+  opacity: 0.55;                  /* translúcido por defecto */
+  transition: background .25s ease, opacity .25s ease, box-shadow .25s ease;
 }
-.ink-drop::before { width: 8px; height: 6px; left: 60%; top: 15%; }
-.ink-drop::after  { width: 5px; height: 4px; left: 25%; top: 70%; }
+
+/* Al hover “aparece” un poco más y sube el contraste */
+.carta.papel .contenido:hover::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--primary) 70%, var(--secondary-dark) 12%);
+  opacity: 0.9;
+  box-shadow: inset 0 0 1px color-mix(in oklab, white 65%, transparent);
+}
+
+/* Al hacer scroll (activo) un toque más de agarre */
+.carta.papel .contenido::-webkit-scrollbar-thumb:active {
+  background: color-mix(in oklab, var(--primary-dark) 65%, var(--secondary-dark) 18%);
+}
+

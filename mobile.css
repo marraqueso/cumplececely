@@ -51,3 +51,15 @@ background-color: rgba(24, 24, 24, 0.983);
   .carta.papel .titulo { margin-bottom: 6px; }
   .carta.papel .contenido { margin-top: 6px; }
 }
+
+
+/* === Ocultar scrollbar en móviles pequeños (opcional, limpio visual) === */
+@media (max-width: 420px) {
+  .carta.papel .contenido {
+    scrollbar-width: none;         /* Firefox */
+    -ms-overflow-style: none;      /* IE/Edge Legacy */
+  }
+  .carta.papel .contenido::-webkit-scrollbar {
+    display: none;                 /* WebKit/Chromium */
+  }
+}
