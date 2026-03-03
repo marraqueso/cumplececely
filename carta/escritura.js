@@ -1,33 +1,3 @@
-function placeInkDropNearLine(cardEl, lineEl) {
-  const cardBox = cardEl.getBoundingClientRect();
-  const lineBox = lineEl.getBoundingClientRect();
-
-  // Posición base: al final de la línea, con ligera aleatoriedad
-  const x = lineBox.right - cardBox.left + (Math.random() * 14 - 7); // +-7px
-  const y = lineBox.top - cardBox.top + (Math.random() * 10 - 5); // +-5px
-
-  const drop = document.createElement("div");
-  drop.className = "ink-drop";
-  drop.style.left = `${x}px`;
-  drop.style.top = `${y}px`;
-
-  // Tamaño y rotación variables para naturalidad
-  const w = 18 + Math.random() * 16; // 18–34px
-  const h = 10 + Math.random() * 10; // 10–20px
-  drop.style.width = `${w}px`;
-  drop.style.height = `${h}px`;
-  drop.style.transform += ` rotate(${(Math.random() * 14 - 7).toFixed(1)}deg)`;
-  // drop.style.opacity = 0;
-
-  cardEl.appendChild(drop);
-
-  // Forzar reflow y hacer aparecer
-  requestAnimationFrame(() => drop.classList.add("show"));
-
-  // (Opcional) retirar si quieres que desaparezcan después:
-  //setTimeout(() => drop.remove(), 800);
-}
-
 /* escritura.js */
 (() => {
   "use strict";
@@ -216,35 +186,12 @@ function placeInkDropNearLine(cardEl, lineEl) {
 
     el.textContent = "";
 
-    // for (let i = 0; i < text.length; i++) {
-    //   const ch = text.charAt(i);
-    //   el.textContent += ch;
-
-    //   if (sound && (soundPerSpace || ch !== ' ')) {
-    //     clicker.play();
-    //   }
-
-    //   if (!prefersReduce) await sleep(speed);
-    //   if (!prefersReduce && extraPauseAfter.test(ch)) {
-    //     await sleep(extraPauseMs);
-    //   }
-    // }
-
-    let charsSinceDrop = 0;
     for (let i = 0; i < text.length; i++) {
       const ch = text.charAt(i);
       el.textContent += ch;
 
-      if (sound && (soundPerSpace || ch !== " ")) {
+      if (sound && (soundPerSpace || ch !== ' ')) {
         clicker.play();
-      }
-
-      // Cada 12–18 caracteres, una micro-gota cerca del final de línea
-      charsSinceDrop++;
-      const threshold = 12 + Math.floor(Math.random() * 6); // 12–17
-      if (charsSinceDrop >= threshold) {
-        charsSinceDrop = 0;
-        placeInkDropNearLine(document.querySelector(".carta"), el);
       }
 
       if (!prefersReduce) await sleep(speed);
