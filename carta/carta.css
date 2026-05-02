@@ -31,6 +31,11 @@ body {
   margin: 0; /* sin espacio entre párrafos */
 }
 
+.especial{
+  color: color-mix(in oklab, black 80%, var(--primary) 20%);
+  font-style: italic;
+  font-weight: bolder;
+}
 /* ===== MODO PAPEL (estilo carta manuscrita) ===== */
 
 /* Activado con .carta.papel */
