@@ -174,21 +174,44 @@
   // ===== Utilidades =====
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+  // ===== Escritura de Línea con Auto-Scroll para Móviles =====
   async function typeWriter(el, text, options) {
-    const { speed, sound, soundPerSpace, extraPauseAfter, extraPauseMs } =
-      options;
+    const { speed, sound, soundPerSpace, extraPauseAfter, extraPauseMs } = options;
 
-    // Asegura que sólo esta línea muestre el cursor
     document
       .querySelectorAll(".tw-line.is-typing")
       .forEach((n) => n.classList.remove("is-typing"));
-    el.classList.add("is-typing");
 
+    el.classList.add("is-typing");
     el.textContent = "";
+
+    // Si la línea está vacía (renglón de separación)
+    if (text.trim() === "") {
+      el.innerHTML = "&nbsp;";
+
+      // Auto-scroll suave al saltar de párrafo
+      el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      await sleep(100);
+      el.classList.remove("is-typing");
+      el.classList.add("tw-done");
+      return;
+    }
+
+    // Obtenemos el contenedor interno que tiene el scrollbar
+    const contenedorContenido = document.getElementById("contenido");
 
     for (let i = 0; i < text.length; i++) {
       const ch = text.charAt(i);
       el.textContent += ch;
+
+      // ✨ EFECTO AUTO-SCROLL OPTIMIZADO ✨
+      // En móviles, forzamos al contenedor a mantener el scroll abajo 
+      // cada vez que se agrega un carácter, garantizando un movimiento ultrasuave.
+      if (contenedorContenido) {
+        // Hacemos que el scroll vertical alcance el tope máximo de su altura interna
+        contenedorContenido.scrollTop = contenedorContenido.scrollHeight;
+      }
 
       if (sound && (soundPerSpace || ch !== ' ')) {
         clicker.play();
@@ -200,10 +223,39 @@
       }
     }
 
-    // Línea terminada: quita cursor en este párrafo
     el.classList.remove("is-typing");
-    el.classList.add("tw-done"); // por si quieres estilos de "terminado"
+    el.classList.add("tw-done");
   }
+  // async function typeWriter(el, text, options) {
+  //   const { speed, sound, soundPerSpace, extraPauseAfter, extraPauseMs } =
+  //     options;
+
+  //   // Asegura que sólo esta línea muestre el cursor
+  //   document
+  //     .querySelectorAll(".tw-line.is-typing")
+  //     .forEach((n) => n.classList.remove("is-typing"));
+  //   el.classList.add("is-typing");
+
+  //   el.textContent = "";
+
+  //   for (let i = 0; i < text.length; i++) {
+  //     const ch = text.charAt(i);
+  //     el.textContent += ch;
+
+  //     if (sound && (soundPerSpace || ch !== ' ')) {
+  //       clicker.play();
+  //     }
+
+  //     if (!prefersReduce) await sleep(speed);
+  //     if (!prefersReduce && extraPauseAfter.test(ch)) {
+  //       await sleep(extraPauseMs);
+  //     }
+  //   }
+
+  //   // Línea terminada: quita cursor en este párrafo
+  //   el.classList.remove("is-typing");
+  //   el.classList.add("tw-done"); // por si quieres estilos de "terminado"
+  // }
 
   async function revealSignature(sigEl, options) {
     if (!sigEl) return;

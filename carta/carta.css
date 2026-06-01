@@ -19,10 +19,11 @@ body {
 }
 
 .carta {
-  /* height: 95dvh; para evitar overflow en móviles */
-  /* overflow: visible; */
-  /* overscroll-behavior: contain; */
-  /* padding-top: 15px; */
+  /* para evitar overflow en móviles */
+  height: 95dvh; 
+  overflow: visible;
+  overscroll-behavior: contain;
+  padding-top: 15px;
 }
 
 .tw-line {
@@ -184,7 +185,7 @@ body {
   overflow-y: scroll;
   padding-top: 2px; /* para que el scroll no tape el primer renglón */
   min-height: 0; /* para que el scroll funcione dentro del contenido */
-  max-height: 41vh; /* para evitar overflow en móviles */
+  max-height: 77vh; /* para evitar overflow en móviles */
 
   scrollbar-gutter: stable; /* sin saltos al aparecer el scroll */
 
@@ -290,13 +291,15 @@ body {
     transform 0.6s ease;
   text-align: right;
   width: 100%;
-  margin-top: 24px;
+  /* margin-top: 24px; */
   padding-right: 25px;
   grid-row: 3; /* se posiciona al final de la carta */
 }
 .carta.papel .firma.show {
   opacity: 1;
   transform: translateY(0);
+  display: inline-block;
+  overflow-wrap: normal;
 }
 
 /* Separador de firma, más sutil “tinta” */
