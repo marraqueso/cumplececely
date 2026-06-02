@@ -59,6 +59,14 @@ body {
       color-mix(in oklab, var(--highlight) 55%, white) 0%,
       transparent 58%
     ),
+    /* renglones*/
+    repeating-linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--text) 100%, transparent) 0px,
+        color-mix(in oklab, var(--text) 100%, transparent) 1px,
+        transparent 1px,
+        transparent 28px
+      ),
     /* base papel */ color-mix(in oklab, white 92%, var(--highlight) 8%);
   border: 1px solid color-mix(in oklab, var(--text) 10%, white);
   box-shadow:
@@ -177,19 +185,9 @@ body {
   overflow-y: scroll;
   padding-top: 2px; /* para que el scroll no tape el primer renglón */
   min-height: 0; /* para que el scroll funcione dentro del contenido */
-  max-height: 77vh; /* para evitar overflow en móviles */
+  max-height: 70vh; /* para evitar overflow en móviles */
 
   scrollbar-gutter: stable; /* sin saltos al aparecer el scroll */
-
-  /*Renglones tipo cuaderno*/
-  background-image: repeating-linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--text) 100%, transparent) 0px,
-    color-mix(in oklab, var(--text) 100%, transparent) 1px,
-    transparent 1px,
-    transparent 28px
-  );
-  background-attachment: local;
 
   /* Firefox */
   scrollbar-width: thin; /* fino */
