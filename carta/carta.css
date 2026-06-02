@@ -185,7 +185,7 @@ body {
   overflow-y: scroll;
   padding-top: 2px; /* para que el scroll no tape el primer renglón */
   min-height: 0; /* para que el scroll funcione dentro del contenido */
-  max-height: 70vh; /* para evitar overflow en móviles */
+  max-height: 75vh; /* para evitar overflow en móviles */
 
   scrollbar-gutter: stable; /* sin saltos al aparecer el scroll */
 
