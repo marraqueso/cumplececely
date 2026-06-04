@@ -23,7 +23,7 @@ body {
 
 .carta {
   /* para evitar overflow en móviles */
-  height: 95dvh;
+  height: 92dvh;
   overflow: visible;
   overscroll-behavior: contain;
   padding-top: 15px;
