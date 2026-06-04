@@ -23,7 +23,7 @@ body {
 
 .carta {
   /* para evitar overflow en móviles */
-  height: 92dvh;
+  height: 95dvh;
   overflow: visible;
   overscroll-behavior: contain;
   padding-top: 15px;
@@ -49,7 +49,7 @@ body {
 .carta.papel {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 95dvh;
+  height: 92dvh;
   /* para evitar overflow en móviles */
   position: relative;
   width: clamp(320px, 80vw, 640px);
@@ -178,7 +178,7 @@ body {
   /* para que el scroll no tape el primer renglón */
   min-height: 0;
   /* para que el scroll funcione dentro del contenido */
-  max-height: 73vh;
+  max-height: 70vh;
   /* para evitar overflow en móviles */
   scrollbar-gutter: stable;
   /* sin saltos al aparecer el scroll */
