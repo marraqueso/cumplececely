@@ -39,7 +39,7 @@ function inflarGlobo() {
 // Función para explotar el globo 
 function explotar() {
     clearInterval(intervaloTiempo);
-    mensaje.textContent = "¡El globo explotó!";
+    mensaje.textContent = "E se ti rubassi un bacio quando ci vediamo?...<br /> Ti arrabbieresti?";
     globo.removeEventListener("click", inflarGlobo);
     globo.classList.add("explosion");
     
