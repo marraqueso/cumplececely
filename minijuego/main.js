@@ -10,7 +10,7 @@ let juegoIniciado = false; // bandera para evitar reinicios
 
 // Variables del juego
 let size = 100; // tamaño inicial 
-let maxSize = 300; // tamaño máximo antes de explotar 
+let maxSize = 500; // tamaño máximo antes de explotar 
 let tiempoLimite = 10000; // 10 segundos
 let tiempoRestante = tiempoLimite; 
 let intervaloTiempo;
