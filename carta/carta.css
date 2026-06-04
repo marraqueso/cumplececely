@@ -170,7 +170,7 @@ body {
 /* Línea vertical de margen tipo “legal pad” (opcional) */
 .carta.papel .contenido {
   position: relative;
-  padding-left: 25px;
+  padding-left: 23px;
   /* margen para la línea vertical */
   margin-top: 4px;
   overflow-y: scroll;
@@ -178,7 +178,7 @@ body {
   /* para que el scroll no tape el primer renglón */
   min-height: 0;
   /* para que el scroll funcione dentro del contenido */
-  max-height: 75vh;
+  max-height: 73vh;
   /* para evitar overflow en móviles */
   scrollbar-gutter: stable;
   /* sin saltos al aparecer el scroll */
