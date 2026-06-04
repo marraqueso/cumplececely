@@ -9,18 +9,21 @@ body {
   overflow: clip;
   /* overflow: hidden;
   fallback: hidden; */
-} /* fallback: overflow: hidden; */
+}
+
+/* fallback: overflow: hidden; */
 
 .contenedor {
   display: grid;
   place-items: center;
   width: 100%;
-  min-height: 100dvh; /* mejor que 100vh en móviles */
+  min-height: 100dvh;
+  /* mejor que 100vh en móviles */
 }
 
 .carta {
   /* para evitar overflow en móviles */
-  height: 95dvh; 
+  height: 95dvh;
   overflow: visible;
   overscroll-behavior: contain;
   padding-top: 15px;
@@ -28,53 +31,48 @@ body {
 
 .tw-line {
   display: block;
-  min-height: 1.6em; /* ya lo tenías; mantiene el renglón “fijo” */
-  margin: 0; /* sin espacio entre párrafos */
+  min-height: 1.6em;
+  /* ya lo tenías; mantiene el renglón “fijo” */
+  margin: 0;
+  /* sin espacio entre párrafos */
 }
 
-.especial{
+.especial {
   color: color-mix(in oklab, black 80%, var(--primary) 20%);
   font-style: italic;
   font-weight: bolder;
 }
+
 /* ===== MODO PAPEL (estilo carta manuscrita) ===== */
 
 /* Activado con .carta.papel */
 .carta.papel {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 95dvh; /* para evitar overflow en móviles */
+  height: 95dvh;
+  /* para evitar overflow en móviles */
   position: relative;
   width: clamp(320px, 80vw, 640px);
   /* Base “papel marfil” usando tu highlight y blanco — sin hex sueltos */
   background:
-  /* textura de fibras suaves (radiales sutiles) */
-    radial-gradient(
-      1800px 800px at 10% 8%,
+    /* textura de fibras suaves (radiales sutiles) */
+    radial-gradient(1800px 800px at 10% 8%,
       color-mix(in oklab, var(--highlight) 75%, white) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      1600px 700px at 90% 92%,
+      transparent 60%),
+    radial-gradient(1600px 700px at 90% 92%,
       color-mix(in oklab, var(--highlight) 55%, white) 0%,
-      transparent 58%
-    ),
-    /* renglones*/
-    repeating-linear-gradient(
-        to bottom,
-        color-mix(in oklab, var(--text) 100%, transparent) 0px,
-        color-mix(in oklab, var(--text) 100%, transparent) 1px,
-        transparent 1px,
-        transparent 28px
-      ),
-    /* base papel */ color-mix(in oklab, white 92%, var(--highlight) 8%);
+      transparent 58%),
+
+    /* base papel */
+    color-mix(in oklab, white 92%, var(--highlight) 8%);
   border: 1px solid color-mix(in oklab, var(--text) 10%, white);
   box-shadow:
     0 24px 60px color-mix(in oklab, black 25%, transparent),
     0 2px 0 color-mix(in oklab, var(--text) 6%, white);
   border-radius: 3px;
   padding: clamp(30px, 6vw, 54px);
-  overflow: hidden; /* para que las manchas y detalles no se salgan del papel */
+  overflow: hidden;
+  /* para que las manchas y detalles no se salgan del papel */
 }
 
 /* Simula una ligera sombra interior como papel grueso */
@@ -86,51 +84,40 @@ body {
   /* Varias manchas con radial-gradients (puedes mover, escalar y variar opacidad) */
   background:
     /* mancha grande arriba-izquierda */
-    radial-gradient(
-      120px 80px at 18% 14%,
+    radial-gradient(120px 80px at 18% 14%,
       color-mix(in oklab, var(--secondary-dark) 30%, black) 0%,
       color-mix(in oklab, var(--secondary-dark) 24%, black) 16%,
       color-mix(in oklab, var(--secondary-dark) 12%, transparent) 60%,
-      transparent 70%
-    ),
+      transparent 70%),
     /* salpicaduras pequeñas alrededor */
-    radial-gradient(
-        16px 12px at 26% 20%,
-        color-mix(in oklab, var(--secondary-dark) 35%, black) 0%,
-        transparent 60%
-      ),
-    radial-gradient(
-      10px 8px at 22% 24%,
+    radial-gradient(16px 12px at 26% 20%,
       color-mix(in oklab, var(--secondary-dark) 35%, black) 0%,
-      transparent 65%
-    ),
-    radial-gradient(
-      20px 14px at 30% 16%,
+      transparent 60%),
+    radial-gradient(10px 8px at 22% 24%,
       color-mix(in oklab, var(--secondary-dark) 35%, black) 0%,
-      transparent 60%
-    ),
+      transparent 65%),
+    radial-gradient(20px 14px at 30% 16%,
+      color-mix(in oklab, var(--secondary-dark) 35%, black) 0%,
+      transparent 60%),
     /* mancha mediana abajo-derecha */
-    radial-gradient(
-        110px 90px at 84% 82%,
-        color-mix(in oklab, var(--secondary-dark) 28%, black) 0%,
-        color-mix(in oklab, var(--secondary-dark) 22%, black) 16%,
-        color-mix(in oklab, var(--secondary-dark) 10%, transparent) 58%,
-        transparent 70%
-      ),
+    radial-gradient(110px 90px at 84% 82%,
+      color-mix(in oklab, var(--secondary-dark) 28%, black) 0%,
+      color-mix(in oklab, var(--secondary-dark) 22%, black) 16%,
+      color-mix(in oklab, var(--secondary-dark) 10%, transparent) 58%,
+      transparent 70%),
     /* gotitas alrededor */
-    radial-gradient(
-        14px 10px at 80% 78%,
-        color-mix(in oklab, var(--secondary-dark) 30%, black) 0%,
-        transparent 65%
-      ),
-    radial-gradient(
-      10px 8px at 88% 86%,
+    radial-gradient(14px 10px at 80% 78%,
       color-mix(in oklab, var(--secondary-dark) 30%, black) 0%,
-      transparent 65%
-    );
-  opacity: 0.15; /* intensidad global de las manchas */
-  mix-blend-mode: multiply; /* se integran con el papel */
-  filter: blur(0.3px) contrast(1.02); /* micro-difusión */
+      transparent 65%),
+    radial-gradient(10px 8px at 88% 86%,
+      color-mix(in oklab, var(--secondary-dark) 30%, black) 0%,
+      transparent 65%);
+  opacity: 0.15;
+  /* intensidad global de las manchas */
+  mix-blend-mode: multiply;
+  /* se integran con el papel */
+  filter: blur(0.3px) contrast(1.02);
+  /* micro-difusión */
 }
 
 /* Pega cinta (washi) opcional — descomenta si quieres el detalle*/
@@ -151,72 +138,84 @@ body {
 .carta.papel .mensaje {
   text-align: left;
   max-width: 720px;
-  transform: rotate(-0.35deg); /* ...y la aplicamos al contenido */
+  transform: rotate(-0.35deg);
+  /* ...y la aplicamos al contenido */
   transform-origin: center;
 }
 
 /* Título caligráfico grande (Allura) */
 .carta.papel .titulo {
-  margin-bottom: 0; /* antes: 10px */
-  transform: rotate(0.2deg) translateY(-30px); /* lo sube 2px y mantiene la gracia manuscrita */
+  margin-bottom: 0;
+  /* antes: 10px */
+  transform: rotate(0.2deg) translateY(-30px);
+  /* lo sube 2px y mantiene la gracia manuscrita */
   text-align: center;
   width: 100%;
   display: block;
-  font-family: "Allura", cursive; /* coherente con tu normalización */
+  font-family: "Allura", cursive;
+  /* coherente con tu normalización */
   font-size: clamp(40px, 7.2vw, 74px);
   letter-spacing: 0.4px;
-  color: color-mix(
-    in oklab,
-    black 80%,
-    var(--secondary-dark) 25%
-  ); /* “tinta” */
-  text-shadow: 0 0.3px 0
-    color-mix(in oklab, var(--secondary-dark) 8%, transparent);
+  color: color-mix(in oklab,
+      black 80%,
+      var(--secondary-dark) 25%);
+  /* “tinta” */
+  text-shadow: 0 0.3px 0 color-mix(in oklab, var(--secondary-dark) 8%, transparent);
 }
 
 .carta.papel .titulo strong {
   color: color-mix(in oklab, black 10%, var(--primary) 60%);
 }
+
 /* Línea vertical de margen tipo “legal pad” (opcional) */
 .carta.papel .contenido {
   position: relative;
-  padding-left: 25px; /* margen para la línea vertical */
+  padding-left: 25px;
+  /* margen para la línea vertical */
   margin-top: 4px;
   overflow-y: scroll;
-  padding-top: 2px; /* para que el scroll no tape el primer renglón */
-  min-height: 0; /* para que el scroll funcione dentro del contenido */
-  max-height: 75vh; /* para evitar overflow en móviles */
-
-  scrollbar-gutter: stable; /* sin saltos al aparecer el scroll */
-
+  padding-top: 2px;
+  /* para que el scroll no tape el primer renglón */
+  min-height: 0;
+  /* para que el scroll funcione dentro del contenido */
+  max-height: 75vh;
+  /* para evitar overflow en móviles */
+  scrollbar-gutter: stable;
+  /* sin saltos al aparecer el scroll */
+  /* renglones*/
+  background-image:
+    repeating-linear-gradient(to bottom,
+      color-mix(in oklab, var(--text) 100%, transparent) 0px,
+      color-mix(in oklab, var(--text) 100%, transparent) 1px,
+      transparent 1px,
+      transparent 28px);
+  background-attachment: local;
   /* Firefox */
-  scrollbar-width: thin; /* fino */
-  scrollbar-color: color-mix(
-      in oklab,
+  scrollbar-width: thin;
+  /* fino */
+  scrollbar-color: color-mix(in oklab,
       var(--primary) 55%,
-      var(--secondary-dark) 15%
-    )
-    /* thumb */ color-mix(in oklab, var(--highlight) 75%, white 25%); /* track */
+      var(--secondary-dark) 15%)
+    /* thumb */
+    color-mix(in oklab, var(--highlight) 75%, white 25%);
+  /* track */
 
   /* Suavidad (accesibilidad más abajo) */
   scroll-behavior: smooth;
 
   /* Fades superior/inferior para un corte elegante */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 1) 10px,
-    rgba(0, 0, 0, 1) calc(100% - 10px),
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 1) 10px,
-    rgba(0, 0, 0, 1) calc(100% - 10px),
-    rgba(0, 0, 0, 0) 100%
-  );
+  -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 1) 10px,
+      rgba(0, 0, 0, 1) calc(100% - 10px),
+      rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 1) 10px,
+      rgba(0, 0, 0, 1) calc(100% - 10px),
+      rgba(0, 0, 0, 0) 100%);
 }
+
 .carta.papel .contenido::before {
   content: "";
   position: absolute;
@@ -225,13 +224,11 @@ body {
   left: 10px;
   width: 2px;
 
-  background: linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--secondary) 0%, transparent) 0%,
-    color-mix(in oklab, var(--secondary) 28%, transparent) 10px,
-    color-mix(in oklab, var(--secondary) 28%, transparent) calc(100% - 10px),
-    color-mix(in oklab, var(--secondary) 0%, transparent) 100%
-  );
+  background: linear-gradient(to bottom,
+      color-mix(in oklab, var(--secondary) 0%, transparent) 0%,
+      color-mix(in oklab, var(--secondary) 28%, transparent) 10px,
+      color-mix(in oklab, var(--secondary) 28%, transparent) calc(100% - 10px),
+      color-mix(in oklab, var(--secondary) 0%, transparent) 100%);
 
   opacity: 0.5;
   border-radius: 2px;
@@ -242,18 +239,20 @@ body {
   font-family: "Caveat", "Allura", cursive, "Montserrat", sans-serif;
   font-weight: 400;
   font-size: clamp(1.12rem, 2.6vw, 1.45rem);
-  line-height: 1; /* coincide con los renglones */
+  line-height: 1;
+  /* coincide con los renglones */
   color: color-mix(in oklab, black 86%, var(--secondary-dark) 14%);
   text-shadow:
     0 0.25px 0 color-mix(in oklab, var(--secondary-dark) 8%, transparent),
     0 0 0 transparent;
-  transform: rotate(
-    0.1deg
-  ); /* pequeña variación por línea para “mano humana” */
+  transform: rotate(0.1deg);
+  /* pequeña variación por línea para “mano humana” */
 }
+
 .carta.papel .contenido .tw-line:nth-child(odd) {
   transform: rotate(0.2deg);
 }
+
 .carta.papel .contenido .tw-line:nth-child(3n) {
   transform: rotate(-0.15deg);
 }
@@ -266,7 +265,9 @@ body {
 /* Cursor mientras escribe: una barrita fina como lápiz/pluma */
 .carta.papel .tw-line::after {
   content: "";
-} /* default oculto (lo controla .is-typing) */
+}
+
+/* default oculto (lo controla .is-typing) */
 .carta.papel .tw-line.is-typing::after {
   content: "|";
   position: relative;
@@ -281,8 +282,7 @@ body {
   font-family: "Allura", cursive;
   font-size: clamp(1.4rem, 3vw, 1.9rem);
   color: color-mix(in oklab, black 65%, var(--secondary-dark) 35%);
-  text-shadow: 0 0.35px 0
-    color-mix(in oklab, var(--secondary-dark) 10%, transparent);
+  text-shadow: 0 0.35px 0 color-mix(in oklab, var(--secondary-dark) 10%, transparent);
   margin-top: 18px;
   opacity: 0;
   transform: translateY(6px);
@@ -293,8 +293,10 @@ body {
   width: 100%;
   /* margin-top: 24px; */
   padding-right: 25px;
-  grid-row: 3; /* se posiciona al final de la carta */
+  grid-row: 3;
+  /* se posiciona al final de la carta */
 }
+
 .carta.papel .firma.show {
   opacity: 1;
   transform: translateY(0);
@@ -308,22 +310,22 @@ body {
   display: block;
   height: 1px;
   margin: 18px 0 12px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in oklab, black 10%, var(--primary) 60%) 35%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      color-mix(in oklab, black 10%, var(--primary) 60%) 35%,
+      transparent 100%);
 }
 
 .carta.papel .tw-line::after {
   content: "";
   opacity: 0;
 }
+
 .carta.papel .tw-line.is-typing::after {
   content: "|";
   opacity: 0.9;
 }
+
 .carta.papel .tw-line.tw-done::after {
   content: "";
   opacity: 0;
@@ -333,9 +335,11 @@ body {
 .carta.papel .contenido .tw-line:nth-child(2n) {
   color: color-mix(in oklab, black 78%, var(--secondary-dark) 22%);
 }
+
 .carta.papel .contenido .tw-line:nth-child(3n) {
   color: color-mix(in oklab, black 64%, var(--secondary-dark) 26%);
 }
+
 .carta.papel .contenido .tw-line:nth-child(5n) {
   color: color-mix(in oklab, black 77%, var(--secondary-dark) 23%);
 }
@@ -348,7 +352,8 @@ body {
 
 /* WebKit / Chromium */
 .carta.papel .contenido::-webkit-scrollbar {
-  width: 4px;                      /* fino y elegante */
+  width: 4px;
+  /* fino y elegante */
 }
 
 .carta.papel .contenido::-webkit-scrollbar-track {
@@ -368,7 +373,8 @@ body {
   box-shadow:
     inset 0 0 0.75px color-mix(in oklab, white 45%, transparent),
     0 0 0 transparent;
-  opacity: 0.55;                  /* translúcido por defecto */
+  opacity: 0.55;
+  /* translúcido por defecto */
   transition: background .25s ease, opacity .25s ease, box-shadow .25s ease;
 }
 
@@ -383,4 +389,3 @@ body {
 .carta.papel .contenido::-webkit-scrollbar-thumb:active {
   background: color-mix(in oklab, var(--primary-dark) 65%, var(--secondary-dark) 18%);
 }
-
