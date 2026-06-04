@@ -33,7 +33,7 @@ function inflarGlobo() {
         
         window.location.href = "../carta/carta.html";
         
-    }, 4000);
+    }, 6000);
 }
 
 // Función para explotar el globo 
